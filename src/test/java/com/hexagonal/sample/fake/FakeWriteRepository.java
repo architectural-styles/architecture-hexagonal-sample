@@ -15,7 +15,7 @@ public class FakeWriteRepository implements WriteRepository {
     }
 
     @Override
-    public void update(String id, User user) {
+    public void update(User user) {
         this.lastUpdated = user;
     }
 

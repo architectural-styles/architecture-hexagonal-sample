@@ -13,8 +13,12 @@ import java.util.Optional;
 
 import static org.jooq.impl.DSL.*;
 
+
+/**
+ * Package-private.
+ */
 @Profile("jooq")
-public class JooqReadRepository implements ReadRepository {
+final class JooqReadRepository implements ReadRepository {
 
     private final DSLContext dsl;
 

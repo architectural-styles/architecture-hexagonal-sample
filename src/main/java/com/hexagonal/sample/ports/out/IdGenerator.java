@@ -1,3 +1,10 @@
 package com.hexagonal.sample.ports.out;
 
-public interface IdGenerator { String nextId();}
+/**
+ * Port for generating unique user identifiers.
+ * Default implementation produces UUID v7 (time-based, sortable).
+ */
+@FunctionalInterface
+public interface IdGenerator {
+    String nextId();
+}

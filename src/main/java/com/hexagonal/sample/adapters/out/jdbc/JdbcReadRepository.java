@@ -9,8 +9,11 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
+/**
+ * Package-private.
+ */
 @Profile("jdbc")
-public class JdbcReadRepository implements ReadRepository {
+final class JdbcReadRepository implements ReadRepository {
 
     private final JdbcClient jdbc;
 

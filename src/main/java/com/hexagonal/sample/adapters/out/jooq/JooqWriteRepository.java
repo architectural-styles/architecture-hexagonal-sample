@@ -1,7 +1,7 @@
 package com.hexagonal.sample.adapters.out.jooq;
 
 import com.hexagonal.sample.core.domain.User;
-import com.hexagonal.sample.core.exception.UserNotFoundException;
+import com.hexagonal.sample.core.domain.UserNotFoundException;
 import com.hexagonal.sample.ports.out.WriteRepository;
 import org.jooq.DSLContext;
 import org.springframework.context.annotation.Profile;
@@ -10,8 +10,12 @@ import java.time.LocalDate;
 import java.util.Objects;
 import static org.jooq.impl.DSL.*;
 
+
+/**
+ * Package-private.
+ */
 @Profile("jooq")
-public class JooqWriteRepository implements WriteRepository {
+final class JooqWriteRepository implements WriteRepository {
 
     private final DSLContext dsl;
 
@@ -38,17 +42,17 @@ public class JooqWriteRepository implements WriteRepository {
     }
 
     @Override
-    public void update(String id, User user) {
-        Objects.requireNonNull(id, "Id must not be null");
+    public void update(User user) {
         Objects.requireNonNull(user, "User must not be null");
+        Objects.requireNonNull(user.id(), "Id must not be null");
 
         int updated = dsl.update(table(Sql.TABLE))
                 .set(field(Sql.NAME, String.class), user.name())
                 .set(field(Sql.BIRTH_DATE, LocalDate.class), user.birthDate())
-                .where(field(Sql.ID, String.class).eq(id))
+                .where(field(Sql.ID, String.class).eq(user.id()))
                 .execute();
 
-        ensureFound(updated, id);
+        ensureFound(updated, user.id());
     }
 
     @Override

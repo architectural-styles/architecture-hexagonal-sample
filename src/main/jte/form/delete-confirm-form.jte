@@ -1,23 +1,27 @@
-@param com.hexagonal.sample.adapters.in.common.dto.Response response
+@param com.hexagonal.sample.adapters.in.common.dto.UserResponse response
 
-<h2>Подтвердите удаление</h2>
+<h2>Confirm Deletion</h2>
 
-Удалить Юзера - «${response.id()}. ${response.name()}»?
+Delete user — “${response.id()}. ${response.name()}”?
 
 <hr>
-<h2>Вернуться к данным о пользователе</h2>
 
-<!-- Прямая ссылка -->
-<a href="/mvc/users/search/id?id=${response.id()}">Вернуться к пользователю</a>
+<h2>Return to User Details</h2>
 
-<!-- Кнопка в форме -->
+<!-- Direct link -->
+<a href="/mvc/users/search/id?id=${response.id()}">Back to User</a>
+
+<!-- Button in form -->
 <form action="/mvc/users/search/id" method="get" style="display:inline;">
     <input type="hidden" name="id" value="${response.id()}">
-    <button type="submit">Вернуться к пользователю</button>
+    <button type="submit">Back to User</button>
 </form>
+
 <hr>
-<h2>Удалить</h2>
+
+<h2>Delete</h2>
 <form action="/mvc/users/${response.id()}/delete" method="post">
-    <button type="submit">Удалить</button>
+    <button type="submit">Delete</button>
 </form>
+
 <hr>

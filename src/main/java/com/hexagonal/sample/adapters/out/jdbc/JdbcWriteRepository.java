@@ -1,15 +1,18 @@
 package com.hexagonal.sample.adapters.out.jdbc;
 
 import com.hexagonal.sample.core.domain.User;
-import com.hexagonal.sample.core.exception.UserNotFoundException;
+import com.hexagonal.sample.core.domain.UserNotFoundException;
 import com.hexagonal.sample.ports.out.WriteRepository;
 import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.core.simple.JdbcClient;
 
 import java.util.Objects;
 
+/**
+ * Package-private.
+ */
 @Profile("jdbc")
-public class JdbcWriteRepository implements WriteRepository {
+final class JdbcWriteRepository implements WriteRepository {
 
     private final JdbcClient jdbc;
 
@@ -46,15 +49,15 @@ public class JdbcWriteRepository implements WriteRepository {
     }
 
     @Override
-    public void update(String id, User user) {
-        Objects.requireNonNull(id, "Id must not be null");
+    public void update(User user) {
         Objects.requireNonNull(user, "User must not be null");
+        Objects.requireNonNull(user.id(), "Id must not be null");
 
         ensureFound(jdbc.sql(Sql.UPDATE)
-                .param("id", id)
+                .param("id", user.id())
                 .param("name", user.name())
                 .param("birthDate", user.birthDate())
-                .update(), id);
+                .update(), user.id());
     }
 
     @Override

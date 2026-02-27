@@ -1,7 +1,9 @@
 # Hexagonal Architecture — Sample / Boilerplate
 
 A reference boilerplate for a hexagonal (Ports & Adapters) architecture built with Spring Boot.  
+
 The goal is to demonstrate strict boundary enforcement between the application core and the outside world, effortless infrastructure replacement, and a deliberate testing pyramid.  
+
 The domain is intentionally minimal — a single `User` entity with full CRUD — so the architectural patterns remain in focus rather than getting buried in business details.
 
 > **See also:** [application-layered-sample](../application-layered-sample) — the same feature set implemented as a classic layered monolith. The two projects are designed to be read side by side: the layered version makes the migration path toward hexagonal architecture self-evident, requiring nothing more than relocating the port interfaces and renaming packages.

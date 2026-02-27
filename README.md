@@ -161,6 +161,7 @@ The testing pyramid is structured deliberately — each level has a distinct pur
 
 - Java 21, Spring Boot 3.x
 - H2 (in-memory, development and tests only)
+- Spring Web MVC — REST and HTML controllers
 - Spring JdbcClient (6.1+), jOOQ, Spring Data JPA — three interchangeable adapters
 - JTE — template engine for MVC
 - `com.fasterxml.uuid` — UUID v7 generation

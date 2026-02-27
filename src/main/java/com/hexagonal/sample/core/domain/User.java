@@ -5,7 +5,7 @@ import java.util.Objects;
 
 /**
  * Core domain entity representing a user.
- * Enforces invariants: non-null ID and name, non-blank name, non-future birthВate.
+ * Enforces invariants: non-null ID and name, non-blank name, non-future birthDate.
  */
 public record User(String id, String name, LocalDate birthDate) {
     public User {

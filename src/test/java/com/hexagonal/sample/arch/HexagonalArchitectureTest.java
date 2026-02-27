@@ -31,13 +31,6 @@ class HexagonalArchitectureTest {
                     .resideInAPackage("..adapters..");
 
     @ArchTest
-    static final ArchRule coreShouldNotDependOnOutPorts =
-            noClasses()
-                    .that().resideInAPackage("..core.application..")
-                    .should().dependOnClassesThat()
-                    .resideInAPackage("..adapters..");
-
-    @ArchTest
     static final ArchRule domainShouldNotDependOnAnything =
             noClasses()
                     .that().resideInAPackage("..core.domain..")
